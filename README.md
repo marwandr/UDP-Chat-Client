@@ -1,7 +1,7 @@
 # Unreliable Chat Client
 
 ## Overview
-This project implements an unreliable chat client that connects to a server to send and receive messages. The client uses error-checking algorithms such as checksum and sequencing to ensure message integrity. It also supports various protocol commands to manipulate connections, including setting burst values, delay, and bit flips.
+This project implements an unreliable chat client that connects to a server of which the code is also created to send and receive messages. The client uses error-checking algorithms such as checksum and sequencing to ensure message integrity. It also supports various protocol commands to manipulate connections, including setting burst values, delay, and bit flips.
 
 ## Features
 - **Checksum for Error Checking**: Adds and verifies checksums to detect message corruption.
@@ -20,23 +20,28 @@ This project implements an unreliable chat client that connects to a server to s
 - `binascii` library (standard library)
 
 ## Usage  
-(Currently there is no server file made yet, I will still add this to ensure the client can be ran.)  
-1. **Running the Client**:
-   - Ensure the server is running and accessible.
-   - Run the client script: `python chat_client.py`.
+1. **Running the Server**:
+   - Adjust the IP Address and port to your needs.
+   - Ensure the port is free in order to run the server.
 
-2. **Logging In**:
+2. **Running the Client**:
+   - Ensure the server is running and accessible.
+   - Ensure the client uses the correct server address and port.
+   - Run the client script: `python3 chat_client.py`.
+
+3. **Logging In**:
    - Enter a unique username when prompted.
    - If the username is in use or contains disallowed characters, you will be prompted to enter a different username.
 
-3. **Sending Messages**:
+4. **Sending Messages**:
    - To send a message to a user: `@username message`
    - To see who is online: `!who`
+     (Currently the implementation for adjusting the server values to manually create network circumstances is not finished yet)    
    - To reset the server values: `!reset`
    - To get the value of a setting: `!get SETTING_NAME`
    - To set the value of a setting: `!set SETTING_NAME value`
 
-4. **Quitting**:
+5. **Quitting**:
    - To quit the client: `!quit`
 
 ## Error Handling
