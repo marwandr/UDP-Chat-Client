@@ -168,6 +168,7 @@ def sendPackets(client, packet_size):
                 if bad_user == True:
                     break
             time.sleep(1)
+            print(f"{acknowledged} ; {packets}\n")
             if acknowledged >= (packets):
                 break
         bad_user = False
@@ -177,13 +178,13 @@ def checkError(data, expected_sequence_number):
     global messages
     user = data.split()[1]
     splitdata = ' '.join(data.split()[:1])
-    data = data[len(splitdata)+1:-1] # get rid of DELIVERY and the newline, leaving only the message itself
+    data = data[len(splitdata)+1:-1]                    # get rid of DELIVERY and the newline, leaving only the message itself
     regex = re.search(r'^(.*)\*(\d+)\*(\d+)$', data[len(user)+1:]) # get the regex
     if not regex:
         print("oops")
         return 'e'
-    sequence_number = regex.group(3) # get the sequence number
-    message = regex.group(1) # get the actual message
+    sequence_number = regex.group(3)    # get the sequence number
+    message = regex.group(1)            # get the actual message
     try:
         if int(sequence_number) == 0:
             messages.update({user:message})
@@ -219,6 +220,7 @@ def receive(client):
                     acknowledged = 0
                 elif dataArray[2] == "ACK":
                     try:
+                        print("Acknowledged \n")
                         if len(dataArray) == 3:
                             acknowledged += 1
                         elif acknowledged == int(dataArray[3]):
