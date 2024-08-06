@@ -12,6 +12,10 @@ logging.basicConfig(
     level=logging.DEBUG
 )
 
+# A basic server created to handle multiple clients and their requests from the UDP chat client.
+# You need to have the server running to use the clients - make sure the port and address match as well.
+# Currently it's set to the default local host as address.
+
 SERVER_ADDRESS = '127.0.0.1'
 SERVER_PORT = 5382
 HOST_PORT = (SERVER_ADDRESS, SERVER_PORT)
